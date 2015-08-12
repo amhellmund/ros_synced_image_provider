@@ -50,7 +50,8 @@ The following options are available:
 * **srcdir**: The root directory where the image sequences are provided. If this option is omitted, the current working directory is assumed.
 * **filepattern**: The file pattern to match image files in the directory. The file pattern has to specified using a regular expression (Boost regular expression).
 * **cameras**: This section defines the names of the of the cameras which are used as ROS topic names. There is one configuration entry for every camera name. Each camera configuration accepts the following parameters:
-*  * **directory**: The directory where the image sequences are found. If the directory name does **not** start with a / (aka. root directory), it is assumed to be relative to the srcdir above. This is a mandatory parameter.
+*  
+   * **directory**: The directory where the image sequences are found. If the directory name does **not** start with a / (aka. root directory), it is assumed to be relative to the srcdir above. This is a mandatory parameter.
    * **imagetype**: The type of the image. Currently the following formats are supported: *mono8*, *rgb8* and *bgr8*. This is a mandatory parameter.
    * **buffersize**: The queue size of the ROS topic. The default value is 1.
 The configuration file uses the YAML format
@@ -65,4 +66,4 @@ roslaunch ros_synced_image_provider image_provider.launch configfile:=/tmp/confi
 
 Feedback
 ========
-If you have any feedback or faced whatever kinds of problems, please let me directly know via [hellmund@fzi.de](mailto:hellmund@fzi.de).
+If you have any feedback or faced whatever kinds of problems, please let me directly know via [hellmund@fzi.de](mailto:hellmund@fzi.de?subject=ROS Synced Image Provider).
