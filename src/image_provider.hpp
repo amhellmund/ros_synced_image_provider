@@ -119,6 +119,7 @@ struct ImageProviderConfiguration {
     std::string topicPrefix;                            /**< The ROS topic prefix. */
     int rate;                                           /**< The rate at which images are provided. */
     int startPos;                                       /**< The start position inside the image sequence. */
+    int length;                                         /**< The length of the image sequences to be provided. */
     bool loop;							                /**< Repeat the sequence at the end. */
     CameraConfigEntry::ConstPtrList cameraConfigs;      /**< A list of camera configurations. */
 };

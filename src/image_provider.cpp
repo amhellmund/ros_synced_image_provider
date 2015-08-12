@@ -97,7 +97,12 @@ FlagErrorReturnValue ImageProvider::validateFileLists (const ImageProviderRuntim
 
 void ImageProvider::run () {
     if (runtimeData.size() > 0) {
-        run(numberOfImages);
+        if (configuration->length > 0) {
+            run(configuration->length);
+        }
+        else {
+            run(numberOfImages);
+        }
     }
 }
 
@@ -183,13 +188,14 @@ ImageProviderConfiguration::ConstPtr getImageProviderConfiguration () {
     std::string configurationPrefix;
     privateNodeHandle.param("cfgprefix", configurationPrefix, std::string("configuration"));
     privateNodeHandle.param("startpos", configuration->startPos, 0);
+    privateNodeHandle.param("length", configuration->length, -1);
     privateNodeHandle.param("rate", configuration->rate, 1);
     privateNodeHandle.param("loop", configuration->loop, false);
     privateNodeHandle.param("topicprefix", configuration->topicPrefix, std::string("cameras"));
     ros::NodeHandle configNodeHandle (privateNodeHandle, configurationPrefix);
     // configuration parameters (supposed to be loaded via YAML file)
     if (!configNodeHandle.getParam("srcdir", configuration->sourceDir)) {
-        throw ImageProviderException("Parameter 'srcdir' not found");
+        configuration->sourceDir = ".";
     }
     if (!configNodeHandle.getParam("filepattern", configuration->filePattern)) {
         throw ImageProviderException("Parameter 'filepattern' not found");
