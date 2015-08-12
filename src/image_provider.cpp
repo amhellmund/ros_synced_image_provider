@@ -77,7 +77,7 @@ FlagErrorReturnValue ImageProvider::validateFileLists (const ImageProviderRuntim
         if (boost::get<0>(returnValue)) {
             // check the file names
             for (uint64_t i = 0; i < baseSize; i++) {
-                bfs::path fileName = runtimeData[i].fileList->at(i);
+                bfs::path fileName = runtimeData[0].fileList->at(i);
                 for (uint64_t j = 1; j < runtimeData.size(); j++) {
                     if (fileName != runtimeData[j].fileList->at(i)) {
                         std::stringstream ss;
@@ -120,6 +120,7 @@ void ImageProvider::run (const uint64_t numImages) {
                             cvImg.header.stamp = time;
                             cvImg.header.seq = imageCounter;
                             cvImg.encoding = getImageEncodingFromImageType(it->cameraConfiguration->imageType);
+                            ROS_DEBUG_STREAM("Publishing image: " << imageFileName.string());
                             it->pubImage->publish(cvImg.toImageMsg());
                         }
                         else {

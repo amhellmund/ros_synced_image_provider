@@ -5,7 +5,7 @@
     <arg name="rate" default="1" />
     <arg name="topicprefix" default="cameras" />
     <arg name="configfile" />
-    <node launch-prefix="xterm -e gdb -ex run --args" pkg="ros_synced_image_provider" type="synced_image_provider_node" name="synced_image_provider" output="screen">
+    <node pkg="ros_synced_image_provider" type="synced_image_provider_node" name="synced_image_provider" output="screen">
         <param name="startpos" value="$(arg startpos)" />
         <param name="cfgprefix" value="$(arg cfgprefix)" />
         <param name="rate" value="$(arg rate)" />
