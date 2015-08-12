@@ -1,0 +1,16 @@
+<launch>
+    <arg name="startpos" default="0" />
+    <arg name="cfgprefix" default="configuration" />
+    <arg name="loop" default="false" />
+    <arg name="rate" default="1" />
+    <arg name="topicprefix" default="cameras" />
+    <arg name="configfile" />
+    <node launch-prefix="xterm -e gdb -ex run --args" pkg="ros_synced_image_provider" type="synced_image_provider_node" name="synced_image_provider" output="screen">
+        <param name="startpos" value="$(arg startpos)" />
+        <param name="cfgprefix" value="$(arg cfgprefix)" />
+        <param name="rate" value="$(arg rate)" />
+        <param name="loop" value="$(arg loop)" />
+        <param name="topicprefix" value="$(arg topicprefix)" />
+        <rosparam command="load" file="$(arg configfile)" />
+    </node>
+</launch>

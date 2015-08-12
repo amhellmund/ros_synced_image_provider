@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ros_synced_image_provider</name>
+  <version>0.0.0</version>
+  <description>
+    The ros_synced_image_provider is a tool to load image sequences synchronously (multi-view) from file directories into the ROS system.
+  </description>
+
+  <maintainer email="hellmund@fzi.de">Andre-Marcel Hellmund</maintainer>
+  <license>GPLv3</license>
+  <url type="website">https://github.com/amhellmund/ros_synced_image_provider</url>
+  <author email="hellmund@fzi.de">Andre-Marcel Hellmund</author> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <depend>boost</depend>
+  <depend>opencv</depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>
